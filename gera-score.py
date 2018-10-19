@@ -37,21 +37,20 @@ class GeraScore:
         del df['days']
         del df['ts_reg']
         
-        
         #smoothing the user avg score
         sumByUser = df.groupby(['userId'])['score'].sum()
-        
         sumByUser = sumByUser.to_frame().reset_index(level=['userId'])
-        
         sumByUser.columns = ['userId', 'totalScore']
         
         join = pd.merge(df, sumByUser, on='userId')
         
         join['score'] = join['score'] / join['totalScore']
         
-        del join['totalScore']
-        
-        join.to_csv(self.output_csv, sep=';', encoding='utf-8', index=False)
+        x = join.groupby(['userId', 'itemId'])['score'].sum()
+        x = x.to_frame().reset_index(level=['userId', 'itemId'])
+
+                
+        x.to_csv(self.output_csv, sep=';', encoding='utf-8', index=False)
         
         return join
 
