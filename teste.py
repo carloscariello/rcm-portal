@@ -5,50 +5,45 @@ Created on Thu Oct 11 15:19:19 2018
 
 @author: cariello
 """
-
+"""
+    Esse programa cria a pontuacao que mostra a relevancia de cada item pra cada usuario
+    Para amenizar as diferencas entre os niveis de atividade de cada usuario, o score de
+    cada acesso é dividido pelo seu score total.
+"""
 
 
 import pandas as pd
+import math
+from datetime import datetime
 
-from surprise import KNNWithMeans
-from surprise import Dataset
-from surprise import Reader
-from surprise import accuracy
-from surprise.model_selection import cross_validate
-from surprise.model_selection import train_test_split
-
+scoreFn = lambda x : math.exp( -( x**2 )/90 )
 work="~/desenv/rcm-portal/dados"
-df = None
+input_csv = r"%s/user+item +team+ts_reg.csv" % work
+output_csv = r"%s/id_menu+id_usuario+mean_score.csv" % work
 
-df = pd.read_csv(r"%s/id_menu+usuario+score.csv" % work, delimiter=";")
+df = pd.read_csv(input_csv, delimiter=";")
 
-df.shape
+df['now'] = datetime.now()
+df['ts_reg'] = pd.to_datetime(df['ts_reg'], format='%Y-%m-%d %H:%M:%S')
 
-df.head(20)
+df['days'] = [int(i.days) for i in ( df['now'] - df['ts_reg'] )]
 
-max_score = df['score'].max()
+df['score'] = df['days'].astype(float).map( scoreFn )
 
-print(max_score)
-
-reader = Reader(rating_scale=(0, max_score + 1))
-
-data = Dataset.load_from_df(df[['id_usuario', 'id_menu', 'score']], reader)
-
-trainset, testset = train_test_split(data, test_size=.2)
-
-algo = KNNWithMeans(k=50, sim_options={'name': 'pearson_baseline', 'user_based': True})
-
-algo.fit(trainset)
-
-uid = str(1106)  # raw user id
-iid = str(128)  # raw item id
-
-# get a prediction for specific users and items.
-pred = algo.predict(uid, iid, r_ui=4, verbose=True)
-
-test_pred = algo.test(testset)
+del df['now']
+del df['days']
 
 
-# get RMSE
-print("User-based Model : Test Set")
-accuracy.rmse(test_pred, verbose=True)
+#smoothing the user avg score
+sumByUser = df.groupby(['userId'])['score'].sum()
+
+sumByUser = sumByUser.to_frame().reset_index(level=['userId'])
+
+sumByUser.columns = ['userId', 'totalScore']
+
+join = pd.merge(df, sumByUser, on='userId')
+
+join['score'] = join['score'] / join['totalScore']
+
+
+join.to_csv(output_csv, sep=';', encoding='utf-8', index=False)
