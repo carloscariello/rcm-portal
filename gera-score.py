@@ -16,7 +16,12 @@ import pandas as pd
 import math
 from datetime import datetime
 
-scoreFn = lambda x : math.exp( -( x**2 )/90 )
+
+#scoreFn = lambda x : math.exp( -( x**2 )/2 )
+#scoreFn = lambda x : math.exp( -( x ) )
+#scoreFn = lambda x : 1 / (x)
+
+scoreFn = lambda x : math.exp( -( x**2 )/360 )
 
 class GeraScore:
     
@@ -37,6 +42,7 @@ class GeraScore:
         del df['days']
         del df['ts_reg']
         
+        #"""
         #smoothing the user avg score
         sumByUser = df.groupby(['userId'])['score'].sum()
         sumByUser = sumByUser.to_frame().reset_index(level=['userId'])
@@ -48,11 +54,18 @@ class GeraScore:
         
         x = join.groupby(['userId', 'itemId'])['score'].sum()
         x = x.to_frame().reset_index(level=['userId', 'itemId'])
+        
+        df = x
+
+        #"""
+        
+        #df = df.groupby(['userId', 'itemId'])['score'].sum()
+        #df = df.to_frame().reset_index(level=['userId', 'itemId'])
 
                 
-        x.to_csv(self.output_csv, sep=';', encoding='utf-8', index=False)
+        df.to_csv(self.output_csv, sep=';', encoding='utf-8', index=False)
         
-        return join
+        return df
 
 g = GeraScore()
 g.run()
