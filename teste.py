@@ -10,13 +10,26 @@ Created on Thu Oct 11 15:19:19 2018
     Para amenizar as diferencas entre os niveis de atividade de cada usuario, o score de
     cada acesso é dividido pelo seu score total.
 """
-
-from surprise import KNNBasic
-from surprise import KNNWithMeans
-from surprise import Dataset
-from surprise import Reader
-
 import pandas as pd
+#dimport mysql.connector
+from sqlalchemy import create_engine
 
-#pre-processed file with normalized ratings by user
-df = pd.read_csv(r"~/desenv/rcm-portal/dados/id_menu+id_usuario+mean_score.csv", delimiter=";")
+config = { 
+        'host':'dirao.bb.com.br',
+        'database':'pagina_inicial_2017',
+        'user':'rcm97',
+        'password':'secret'
+        }
+
+engine = create_engine('mysql+mysqlconnector://%s:%s@%s:3306/%s' % (config['user'], config['password'], config['host'], config['database']), echo=False)
+
+liste_hello = ['hello1','hello2']
+liste_world = ['world1','world2']
+df = pd.DataFrame(data = {'hello' : liste_hello, 'world': liste_world})
+ 
+# Writing Dataframe to Mysql and replacing table if it already exists
+df.to_sql(name='helloworld', con=engine, if_exists = 'replace', index=False)
+
+
+
+data = pd.read_sql('SELECT * FROM helloworld', engine)

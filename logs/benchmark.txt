@@ -44,14 +44,55 @@ Estimating biases using als...
 |:---------------------------------------------------------------------------------------------------------------------------------------|-------:|------:|:--------|
 | [SVD](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.SVD)      |  0.261 | 0.179 | 0:00:04 |
 | [SVD++](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.SVDpp)  |  0.24  | 0.163 | 0:00:22 |
-| [NMF](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.NMF)      |  0.29  | 0.144 | 0:00:05 |
+| [NMF](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.NMF)      |  0.291 | 0.144 | 0:00:04 |
 | [Slope One](http://surprise.readthedocs.io/en/stable/slope_one.html#surprise.prediction_algorithms.slope_one.SlopeOne)                 |  0.304 | 0.169 | 0:00:00 |
-| [k-NN](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBasic)                        |  0.287 | 0.171 | 0:00:07 |
-| [Centered k-NN](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNWithMeans)           |  0.297 | 0.17  | 0:00:07 |
-| [k-NN Baseline](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBaseline)            |  0.25  | 0.154 | 0:00:08 |
-| [Co-Clustering](http://surprise.readthedocs.io/en/stable/co_clustering.html#surprise.prediction_algorithms.co_clustering.CoClustering) |  0.301 | 0.152 | 0:00:02 |
+| [k-NN](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBasic)                        |  0.287 | 0.171 | 0:00:06 |
+| [Centered k-NN](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNWithMeans)           |  0.297 | 0.17  | 0:00:06 |
+| [k-NN Baseline](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBaseline)            |  0.25  | 0.154 | 0:00:06 |
+| [Co-Clustering](http://surprise.readthedocs.io/en/stable/co_clustering.html#surprise.prediction_algorithms.co_clustering.CoClustering) |  0.304 | 0.154 | 0:00:02 |
 | [Baseline](http://surprise.readthedocs.io/en/stable/basic_algorithms.html#surprise.prediction_algorithms.baseline_only.BaselineOnly)   |  0.251 | 0.165 | 0:00:00 |
 | [Random](http://surprise.readthedocs.io/en/stable/basic_algorithms.html#surprise.prediction_algorithms.random_pred.NormalPredictor)    |  0.37  | 0.265 | 0:00:00 |
 \Best result according to RMSE is: 
 |:--|:--|:--|:--|:-|:--|:--|:--|:--|:--|:--|:--|:--|
 | N | o | n | e |  | S | e | l | e | c | t | e | d |
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Connected to MySQL database
+Loading CSV data
+Max Score is 1
+Building Trainset
+Trainning
+Estimating biases using als...
+Computing the pearson_baseline similarity matrix...
+Done computing similarity matrix.
+Generating predictions dataframe... (wait)
+Building output CSV file (/home/cariello/desenv/rcm-portal/dados/predictions+cf+knnmeans.csv)
+Finished
+Instanciando classe
+Connected to MySQL database
+pagina_inicial_2017
+pagina_inicial_2017
+pagina_inicial_2017
+{'host': 'dirao.bb.com.br', 'database': 'pagina_inicial_2017', 'user': 'rcm97', 'password': 'secret'}
+pagina_inicial_2017
+pagina_inicial_2017
+hello
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Connected to MySQL database
+Instanciando classe
+Instanciando classe
+[H[2J[H[2JInstanciando classe
