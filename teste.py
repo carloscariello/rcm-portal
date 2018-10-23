@@ -11,6 +11,7 @@ Created on Thu Oct 11 15:19:19 2018
     cada acesso é dividido pelo seu score total.
 """
 import pandas as pd
+import numpy as np
 #dimport mysql.connector
 from sqlalchemy import create_engine
 
@@ -23,13 +24,32 @@ config = {
 
 engine = create_engine('mysql+mysqlconnector://%s:%s@%s:3306/%s' % (config['user'], config['password'], config['host'], config['database']), echo=False)
 
-liste_hello = ['hello1','hello2']
-liste_world = ['world1','world2']
-df = pd.DataFrame(data = {'hello' : liste_hello, 'world': liste_world})
- 
-# Writing Dataframe to Mysql and replacing table if it already exists
-df.to_sql(name='helloworld', con=engine, if_exists = 'replace', index=False)
+sqlMenus = """
+    SELECT m.id AS itemId, m.palavras_chave AS tags FROM menu m
+    WHERE m.palavras_chave IS NOT NULL
+	AND (m.dt_fim > NOW() OR m.dt_fim IS NULL )
+    """
+
+menuDf = pd.read_sql(sqlMenus, engine)
+
+tagDict = {}
+for index, row in menuDf.iterrows():
+    for word in row['tags'].split(" "):
+        if( len(word) > 1):
+            tagDict[word] = 1
+
+tagVector = []
+for key in sorted(tagDict):
+    if( len(key) > 2 ):
+        tagVector.append(key.lower())
+
+x = menuDf
+for idx, val in enumerate(tagVector):
+    print(idx, val)
+    x["tag_%d" % idx] = menuDf['tags'].str.contains(val)
+
+del x['tags']
+tagDf = pd.DataFrame(dict(a=np.array(tagVector).tolist()))
 
 
-
-data = pd.read_sql('SELECT * FROM helloworld', engine)
+tagDf = pd.Series(tagVector).to_frame('tag').reset_index(level=['index', 'tag'])

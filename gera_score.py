@@ -37,6 +37,7 @@ class GeraScore:
         self.output_csv = r"%s/id_menu+id_usuario+mean_score.csv" % self.work
     
     def run(self):
+        scoreFn = lambda x : math.exp( -( x**2 )/360 )
         df = pd.read_csv(self.input_csv, delimiter=";")
         df['now'] = datetime.now()
         df['ts_reg'] = pd.to_datetime(df['ts_reg'], format='%Y-%m-%d %H:%M:%S')
