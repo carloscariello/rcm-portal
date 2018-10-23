@@ -52,4 +52,4 @@ del x['tags']
 tagDf = pd.DataFrame(dict(a=np.array(tagVector).tolist()))
 
 
-tagDf = pd.Series(tagVector).to_frame('tag').reset_index(level=['index', 'tag'])
+tagDf = pd.Series(tagVector).to_frame('tag').reset_index()
