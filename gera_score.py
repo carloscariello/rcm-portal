@@ -75,5 +75,5 @@ class GeraScore:
         
         return df
 
-#g = GeraScore()
-#g.run()
+g = GeraScore(GeraScore.work)
+g.run()
