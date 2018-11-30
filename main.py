@@ -9,8 +9,8 @@ import time
 import datetime
 
 
-from private.busca_dados import BuscaDados
-from private.envia_dados import EnviaDados
+#from private.busca_dados import BuscaDados
+#from private.envia_dados import EnviaDados
 
 from gera_score import GeraScore
 from KNNWithMeans import KMeans
@@ -20,8 +20,8 @@ workspace =  work="~/desenv/rcm-portal/dados"
 
 start = time.time()
     
-a = BuscaDados(workspace)
-a.connect()
+#a = BuscaDados(workspace)
+#a.connect()
 
 b = GeraScore(workspace)
 b.run()
@@ -29,8 +29,8 @@ b.run()
 c = KMeans(workspace)
 c.run()
 
-d = EnviaDados(workspace)
-d.connect()
+#d = EnviaDados(workspace)
+#d.connect()
 
 cv_time = str(datetime.timedelta(seconds=int(time.time() - start)))
 

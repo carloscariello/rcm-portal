@@ -55,3 +55,6 @@ class KMeans:
         predictDf.to_csv(self.output_csv, sep=';', encoding='utf-8', index=False)
         
         print("Finished")
+        
+c = KMeans(None)
+c.run()
