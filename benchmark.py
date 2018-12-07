@@ -18,7 +18,6 @@ import pandas as pd
 
 
 import numpy as np
-import six
 from tabulate import tabulate
 
 from surprise import Dataset
@@ -97,9 +96,6 @@ data = Dataset.load_from_df(df[['userId', 'itemId', 'score']], reader)
  
 kf = KFold(random_state=0)  # folds will be the same for all algorithms.
 
-best_mean_rmse = 0.0
-best_mean_mae = 1.0
-best_algo = 'None Selected'
 
 table = []
 for klass in classes:
@@ -110,19 +106,12 @@ for klass in classes:
     mean_rmse = '{:.3f}'.format(np.mean(out['test_rmse']))
     mean_mae = '{:.3f}'.format(np.mean(out['test_mae']))
     
-    new_line = [link, mean_rmse, mean_mae, cv_time]
-    if (np.mean(out['test_rmse']) <= best_mean_rmse ):
-        best_mean_rmse = np.mean(out['test_rmse'])
-        best_algo = new_line
-    #print(tabulate([new_line], tablefmt="pipe"))  # print current algo perf
+    new_line = [klass.__name__, mean_rmse, mean_mae, cv_time]
     table.append(new_line)
 
-header = ["Custom Dataset",
+header = ["Algoritmo",
           'RMSE',
           'MAE',
           'Time'
           ]
 print(tabulate(table, header, tablefmt="pipe"))
-
-print("\r\r\Best result according to RMSE is: ")
-print(tabulate([best_algo], tablefmt="pipe"))

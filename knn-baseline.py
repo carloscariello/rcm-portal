@@ -13,6 +13,7 @@ import pandas as pd
 
 work="~/desenv/rcm-portal/dados"
 input_csv = r"%s/id_menu+id_usuario+mean_score.csv" % work
+output_csv = "%s/knn-baseline-top-rated.csv" % work
 
 df = pd.read_csv(input_csv, delimiter=";")
 
@@ -21,10 +22,10 @@ upper_rating = df['score'].max()
 
 print('Score range: {0} to {1}'.format(lower_rating, upper_rating))
 
-reader = surprise.Reader(rating_scale= (lower_rating, upper_rating))
+reader = surprise.Reader(rating_scale= (.1, upper_rating))
 data = surprise.Dataset.load_from_df(df, reader)
 
-alg = surprise.SVDpp(lr_all=.1, reg_all=.5)
+alg = surprise.KNNBaseline(k=35, sim_options={'name': 'pearson_baseline', 'user_based': True})
 output = alg.fit(data.build_full_trainset())
 
 
@@ -51,3 +52,7 @@ for uid in uids:
     ind = np.argpartition(pred_ratings, -10)[-10:]
     for i in ind:
         df_top_rated.loc[len(df_top_rated)] = [uid, i, pred_ratings[i]]
+
+df_top_rated.to_csv(output_csv, sep=';', encoding='utf-8', index=False)
+
+#validate = surprise.model_selection.cross_validate(alg, data, verbose = True)

@@ -55,3 +55,13 @@ ind = np.argpartition(pred_ratings, -10)[-10:]
 
 for i in ind:
     print('Estimative rating for item {0} is {1}'.format(i, pred_ratings[i]))
+    
+    
+param_grid = {'lr_all' : [.00001, .01], 'reg_all' : [.0001, .5]}
+gs = surprise.model_selection.GridSearchCV(surprise.SVDpp, param_grid, measures=['rmse', 'mae'], cv=3)
+gs.fit(data)
+
+print( gs.best_params['rmse'] )
+
+alg = surprise.SVDpp(lr_all = .01)
+output = surprise.model_selection.cross_validate(alg, data, verbose = True)

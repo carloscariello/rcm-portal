@@ -1,5 +1,54 @@
 Loading CSV data
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(91)[0;36m<module>[1;34m()[0m
+[1;32m     89 [1;33m[0mdf[0m [1;33m=[0m [0mpd[0m[1;33m.[0m[0mread_csv[0m[1;33m([0m[1;34mr"~/desenv/rcm-portal/dados/id_menu+id_usuario+mean_score.csv"[0m[1;33m,[0m [0mdelimiter[0m[1;33m=[0m[1;34m";"[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     90 [1;33m[1;33m[0m[0m
+[0m[1;31m1[1;32m--> 91 [1;33m[0mmax_score[0m [1;33m=[0m [0mdf[0m[1;33m[[0m[1;34m'score'[0m[1;33m][0m[1;33m.[0m[0mmax[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     92 [1;33m[0mprint[0m[1;33m([0m[1;34m"Max Score is %d"[0m [1;33m%[0m [0mmax_score[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     93 [1;33m[0mreader[0m [1;33m=[0m [0mReader[0m[1;33m([0m[0mrating_scale[0m[1;33m=[0m[1;33m([0m[1;36m0[0m[1;33m,[0m [0mmax_score[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[0m
+[0m
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(92)[0;36m<module>[1;34m()[0m
+[1;32m     90 [1;33m[1;33m[0m[0m
+[0m[1;32m     91 [1;33m[0mmax_score[0m [1;33m=[0m [0mdf[0m[1;33m[[0m[1;34m'score'[0m[1;33m][0m[1;33m.[0m[0mmax[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m---> 92 [1;33m[0mprint[0m[1;33m([0m[1;34m"Max Score is %d"[0m [1;33m%[0m [0mmax_score[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     93 [1;33m[0mreader[0m [1;33m=[0m [0mReader[0m[1;33m([0m[0mrating_scale[0m[1;33m=[0m[1;33m([0m[1;36m0[0m[1;33m,[0m [0mmax_score[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     94 [1;33m[1;33m[0m[0m
+[0m
 Max Score is 1
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(93)[0;36m<module>[1;34m()[0m
+[1;32m     91 [1;33m[0mmax_score[0m [1;33m=[0m [0mdf[0m[1;33m[[0m[1;34m'score'[0m[1;33m][0m[1;33m.[0m[0mmax[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     92 [1;33m[0mprint[0m[1;33m([0m[1;34m"Max Score is %d"[0m [1;33m%[0m [0mmax_score[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m---> 93 [1;33m[0mreader[0m [1;33m=[0m [0mReader[0m[1;33m([0m[0mrating_scale[0m[1;33m=[0m[1;33m([0m[1;36m0[0m[1;33m,[0m [0mmax_score[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     94 [1;33m[1;33m[0m[0m
+[0m[1;32m     95 [1;33m[0mdata[0m [1;33m=[0m [0mDataset[0m[1;33m.[0m[0mload_from_df[0m[1;33m([0m[0mdf[0m[1;33m[[0m[1;33m[[0m[1;34m'userId'[0m[1;33m,[0m [1;34m'itemId'[0m[1;33m,[0m [1;34m'score'[0m[1;33m][0m[1;33m][0m[1;33m,[0m [0mreader[0m[1;33m)[0m[1;33m[0m[0m
+[0m
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(95)[0;36m<module>[1;34m()[0m
+[1;32m     93 [1;33m[0mreader[0m [1;33m=[0m [0mReader[0m[1;33m([0m[0mrating_scale[0m[1;33m=[0m[1;33m([0m[1;36m0[0m[1;33m,[0m [0mmax_score[0m[1;33m)[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     94 [1;33m[1;33m[0m[0m
+[0m[1;32m---> 95 [1;33m[0mdata[0m [1;33m=[0m [0mDataset[0m[1;33m.[0m[0mload_from_df[0m[1;33m([0m[0mdf[0m[1;33m[[0m[1;33m[[0m[1;34m'userId'[0m[1;33m,[0m [1;34m'itemId'[0m[1;33m,[0m [1;34m'score'[0m[1;33m][0m[1;33m][0m[1;33m,[0m [0mreader[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     96 [1;33m[1;33m[0m[0m
+[0m[1;32m     97 [1;33m[0mkf[0m [1;33m=[0m [0mKFold[0m[1;33m([0m[0mrandom_state[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m  [1;31m# folds will be the same for all algorithms.[0m[1;33m[0m[0m
+[0m
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(97)[0;36m<module>[1;34m()[0m
+[1;32m     95 [1;33m[0mdata[0m [1;33m=[0m [0mDataset[0m[1;33m.[0m[0mload_from_df[0m[1;33m([0m[0mdf[0m[1;33m[[0m[1;33m[[0m[1;34m'userId'[0m[1;33m,[0m [1;34m'itemId'[0m[1;33m,[0m [1;34m'score'[0m[1;33m][0m[1;33m][0m[1;33m,[0m [0mreader[0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m     96 [1;33m[1;33m[0m[0m
+[0m[1;32m---> 97 [1;33m[0mkf[0m [1;33m=[0m [0mKFold[0m[1;33m([0m[0mrandom_state[0m[1;33m=[0m[1;36m0[0m[1;33m)[0m  [1;31m# folds will be the same for all algorithms.[0m[1;33m[0m[0m
+[0m[1;32m     98 [1;33m[1;33m[0m[0m
+[0m[1;32m     99 [1;33m[1;33m[0m[0m
+[0m
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(100)[0;36m<module>[1;34m()[0m
+[1;32m     98 [1;33m[1;33m[0m[0m
+[0m[1;32m     99 [1;33m[1;33m[0m[0m
+[0m[1;32m--> 100 [1;33m[0mtable[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[0m
+[0m[1;32m    101 [1;33m[1;32mfor[0m [0mklass[0m [1;32min[0m [0mclasses[0m[1;33m:[0m[1;33m[0m[0m
+[0m[1;32m    102 [1;33m    [0mstart[0m [1;33m=[0m [0mtime[0m[1;33m.[0m[0mtime[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m
+> [1;32m/home/cariello/desenv/rcm-portal/benchmark.py[0m(101)[0;36m<module>[1;34m()[0m
+[1;32m     99 [1;33m[1;33m[0m[0m
+[0m[1;32m    100 [1;33m[0mtable[0m [1;33m=[0m [1;33m[[0m[1;33m][0m[1;33m[0m[0m
+[0m[1;32m--> 101 [1;33m[1;32mfor[0m [0mklass[0m [1;32min[0m [0mclasses[0m[1;33m:[0m[1;33m[0m[0m
+[0m[1;32m    102 [1;33m    [0mstart[0m [1;33m=[0m [0mtime[0m[1;33m.[0m[0mtime[0m[1;33m([0m[1;33m)[0m[1;33m[0m[0m
+[0m[1;32m    103 [1;33m    [0mout[0m [1;33m=[0m [0mcross_validate[0m[1;33m([0m[0mklass[0m[1;33m([0m[1;33m)[0m[1;33m,[0m [0mdata[0m[1;33m,[0m [1;33m[[0m[1;34m'rmse'[0m[1;33m,[0m [1;34m'mae'[0m[1;33m][0m[1;33m,[0m [0mkf[0m[1;33m)[0m[1;33m[0m[0m
+[0m
 Computing the msd similarity matrix...
 Done computing similarity matrix.
 Computing the msd similarity matrix...
@@ -40,59 +89,23 @@ Estimating biases using als...
 Estimating biases using als...
 Estimating biases using als...
 Estimating biases using als...
-| Custom Dataset                                                                                                                         |   RMSE |   MAE | Time    |
-|:---------------------------------------------------------------------------------------------------------------------------------------|-------:|------:|:--------|
-| [SVD](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.SVD)      |  0.261 | 0.179 | 0:00:04 |
-| [SVD++](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.SVDpp)  |  0.24  | 0.163 | 0:00:22 |
-| [NMF](http://surprise.readthedocs.io/en/stable/matrix_factorization.html#surprise.prediction_algorithms.matrix_factorization.NMF)      |  0.291 | 0.144 | 0:00:04 |
-| [Slope One](http://surprise.readthedocs.io/en/stable/slope_one.html#surprise.prediction_algorithms.slope_one.SlopeOne)                 |  0.304 | 0.169 | 0:00:00 |
-| [k-NN](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBasic)                        |  0.287 | 0.171 | 0:00:06 |
-| [Centered k-NN](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNWithMeans)           |  0.297 | 0.17  | 0:00:06 |
-| [k-NN Baseline](http://surprise.readthedocs.io/en/stable/knn_inspired.html#surprise.prediction_algorithms.knns.KNNBaseline)            |  0.25  | 0.154 | 0:00:06 |
-| [Co-Clustering](http://surprise.readthedocs.io/en/stable/co_clustering.html#surprise.prediction_algorithms.co_clustering.CoClustering) |  0.304 | 0.154 | 0:00:02 |
-| [Baseline](http://surprise.readthedocs.io/en/stable/basic_algorithms.html#surprise.prediction_algorithms.baseline_only.BaselineOnly)   |  0.251 | 0.165 | 0:00:00 |
-| [Random](http://surprise.readthedocs.io/en/stable/basic_algorithms.html#surprise.prediction_algorithms.random_pred.NormalPredictor)    |  0.37  | 0.265 | 0:00:00 |
-\Best result according to RMSE is: 
-|:--|:--|:--|:--|:-|:--|:--|:--|:--|:--|:--|:--|:--|
-| N | o | n | e |  | S | e | l | e | c | t | e | d |
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Connected to MySQL database
-Loading CSV data
-Max Score is 1
-Building Trainset
-Trainning
+| Algoritmo       |   RMSE |   MAE | Time    |
+|:----------------|-------:|------:|:--------|
+| SVD             |  0.336 | 0.261 | 0:00:00 |
+| SVDpp           |  0.335 | 0.259 | 0:00:01 |
+| NMF             |  0.433 | 0.283 | 0:00:00 |
+| SlopeOne        |  0.508 | 0.399 | 0:00:00 |
+| KNNBasic        |  0.305 | 0.208 | 0:00:00 |
+| KNNWithMeans    |  0.403 | 0.307 | 0:00:00 |
+| KNNBaseline     |  0.289 | 0.204 | 0:00:00 |
+| CoClustering    |  0.45  | 0.278 | 0:00:00 |
+| BaselineOnly    |  0.325 | 0.258 | 0:00:00 |
+| NormalPredictor |  0.49  | 0.382 | 0:00:00 |
+Score range: 0.0 to 1.0000000000000009
 Estimating biases using als...
 Computing the pearson_baseline similarity matrix...
 Done computing similarity matrix.
-Generating predictions dataframe... (wait)
-Building output CSV file (/home/cariello/desenv/rcm-portal/dados/predictions+cf+knnmeans.csv)
-Finished
-Instanciando classe
-Connected to MySQL database
-pagina_inicial_2017
-pagina_inicial_2017
-pagina_inicial_2017
-{'host': 'dirao.bb.com.br', 'database': 'pagina_inicial_2017', 'user': 'rcm97', 'password': 'secret'}
-pagina_inicial_2017
-pagina_inicial_2017
-hello
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Connected to MySQL database
-Instanciando classe
-Instanciando classe
-[H[2J[H[2JInstanciando classe
+Score range: 0.0 to 1.0000000000000009
+Estimating biases using als...
+Computing the pearson_baseline similarity matrix...
+Done computing similarity matrix.
