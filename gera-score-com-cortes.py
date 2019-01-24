@@ -16,21 +16,23 @@ import pandas as pd
 import math
 from datetime import datetime
 
-
-#scoreFn = lambda x : math.exp( -( x**2 )/2 )
-#scoreFn = lambda x : math.exp( -( x ) )
-#scoreFn = lambda x : 1 / (x)
-
 scoreFn = lambda x : math.exp( -( x**2 )/360 )
 
 class GeraScore:
     
     work="~/desenv/rcm-portal/dados"
-    input_csv = r"%s/user+item +team+ts_reg.csv" % work
+    input_csv = r"%s/user+item +team+ts_reg_20181206.csv" % work
     output_csv = r"%s/id_menu+id_usuario+mean_score.csv" % work
     
     def run(self):
         df = pd.read_csv(self.input_csv, delimiter=";")
+
+        counts = df['userId'].value_counts()
+
+        df = df[ ~ df['userId'].isin( counts[counts < 10].index ) ]
+        
+        del counts
+        
         df['now'] = datetime.now()
         df['ts_reg'] = pd.to_datetime(df['ts_reg'], format='%Y-%m-%d %H:%M:%S')
         
@@ -47,15 +49,14 @@ class GeraScore:
         sumByUser = df.groupby(['userId'])['score'].sum()
         sumByUser = sumByUser.to_frame().reset_index(level=['userId'])
         sumByUser.columns = ['userId', 'totalScore']
-        
-        join = pd.merge(df, sumByUser, on='userId')
-        
-        join['score'] = join['score'] / join['totalScore']
-        
+        join = pd.merge(df, sumByUser, on='userId')      
+        join['score'] = join['score'] / join['totalScore']        
         x = join.groupby(['userId', 'itemId'])['score'].sum()
-        x = x.to_frame().reset_index(level=['userId', 'itemId'])
-        
+        x = x.to_frame().reset_index(level=['userId', 'itemId'])      
         df = x
+        
+        limiar = .05
+        df['score'][ df['score'] < limiar ] = limiar
 
         #"""
         
@@ -68,4 +69,7 @@ class GeraScore:
         return df
 
 g = GeraScore()
-g.run()
+df = g.run()
+
+
+

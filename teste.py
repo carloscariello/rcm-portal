@@ -10,46 +10,25 @@ Created on Thu Oct 11 15:19:19 2018
     Para amenizar as diferencas entre os niveis de atividade de cada usuario, o score de
     cada acesso é dividido pelo seu score total.
 """
+
+
 import pandas as pd
-import numpy as np
-#dimport mysql.connector
-from sqlalchemy import create_engine
-
-config = { 
-        'host':'dirao.bb.com.br',
-        'database':'pagina_inicial_2017',
-        'user':'rcm97',
-        'password':'secret'
-        }
-
-engine = create_engine('mysql+mysqlconnector://%s:%s@%s:3306/%s' % (config['user'], config['password'], config['host'], config['database']), echo=False)
-
-sqlMenus = """
-    SELECT m.id AS itemId, m.palavras_chave AS tags FROM menu m
-    WHERE m.palavras_chave IS NOT NULL
-	AND (m.dt_fim > NOW() OR m.dt_fim IS NULL )
-    """
-
-menuDf = pd.read_sql(sqlMenus, engine)
-
-tagDict = {}
-for index, row in menuDf.iterrows():
-    for word in row['tags'].split(" "):
-        if( len(word) > 1):
-            tagDict[word] = 1
-
-tagVector = []
-for key in sorted(tagDict):
-    if( len(key) > 2 ):
-        tagVector.append(key.lower())
-
-x = menuDf
-for idx, val in enumerate(tagVector):
-    print(idx, val)
-    x["tag_%d" % idx] = menuDf['tags'].str.contains(val)
-
-del x['tags']
-tagDf = pd.DataFrame(dict(a=np.array(tagVector).tolist()))
+import math
+from datetime import datetime
 
 
-tagDf = pd.Series(tagVector).to_frame('tag').reset_index()
+work="~/desenv/rcm-portal/dados"
+input_csv = r"%s/user+item +team+ts_reg_20181206.csv" % work
+output_csv = r"%s/id_menu+id_usuario+mean_score.csv" % work
+
+
+
+df = pd.read_csv(input_csv, delimiter=";")
+
+counts = df['userId'].value_counts()
+
+res = df[ ~ df['userId'].isin( counts[counts < 10].index ) ]
+
+del counts
+
+
