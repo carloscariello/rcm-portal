@@ -7,13 +7,13 @@ Created on Mon Oct 22 13:03:51 2018
 """
 import time
 import datetime
-
+import pandas as pd
 
 #from private.busca_dados import BuscaDados
 #from private.envia_dados import EnviaDados
 
-from gera_score import GeraScore
-from KNNWithMeans import KMeans
+from geraScore import GeraScore
+from knnBasic import KnnBasic
 
 workspace =  work="~/desenv/rcm-portal/dados"
 
@@ -23,10 +23,10 @@ start = time.time()
 #a = BuscaDados(workspace)
 #a.connect()
 
-b = GeraScore(workspace)
-b.run()
+g = GeraScore()
+df = g.run()
 
-c = KMeans(workspace)
+c = KnnBasic(workspace)
 c.run()
 
 #d = EnviaDados(workspace)
